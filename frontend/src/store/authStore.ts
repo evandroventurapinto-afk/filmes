@@ -3,7 +3,7 @@ import { createMMKV } from 'react-native-mmkv';
 import axios from 'axios';
 import Constants from 'expo-constants';
 
-const storage = new MMKV();
+const storage = createMMKV();
 
 const BACKEND_URL = Constants.expoConfig?.extra?.EXPO_PUBLIC_BACKEND_URL || process.env.EXPO_PUBLIC_BACKEND_URL || '';
 
