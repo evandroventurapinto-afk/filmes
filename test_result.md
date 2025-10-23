@@ -116,6 +116,9 @@ backend:
       - working: true
         agent: "main"
         comment: "Endpoint /api/health retornando status healthy"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /api/health returns {status: 'healthy'} correctly"
 
   - task: "Auth endpoints (session, me, logout)"
     implemented: true
