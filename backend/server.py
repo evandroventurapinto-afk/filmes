@@ -219,7 +219,7 @@ async def get_current_user(request: Request, authorization: Optional[str] = Head
     
     # Check session
     session = sessions_collection.find_one({"session_token": session_token})
-    if not session or session["expires_at"] < datetime.now(timezone.utc):
+    if not session or session["expires_at"] < datetime.now():
         raise HTTPException(status_code=401, detail="Session expired")
     
     # Get user
