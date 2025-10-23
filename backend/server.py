@@ -301,7 +301,13 @@ async def create_session(response: Response, x_session_id: str = Header(...)):
 
 @app.get("/api/auth/me")
 async def get_me(user: User = Depends(get_current_user)):
-    return user
+    return {
+        "id": user.id,
+        "email": user.email,
+        "name": user.name,
+        "picture": user.picture,
+        "created_at": user.created_at
+    }
 
 @app.post("/api/auth/logout")
 async def logout(response: Response, user: User = Depends(get_current_user), request: Request = None):
