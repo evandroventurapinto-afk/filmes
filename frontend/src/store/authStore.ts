@@ -26,11 +26,21 @@ interface AuthState {
   checkAuth: () => Promise<void>;
 }
 
-export const useAuthStore = create<AuthState>((set, get) => ({
-  user: null,
-  sessionToken: storage.getString('session_token') || null,
-  isLoading: false,
-  isAuthenticated: false,
+export const useAuthStore = create<AuthState>((set, get) => {
+  // Load saved session token (only on client side)
+  let sessionToken: string | null = null;
+  try {
+    sessionToken = storage.getString('session_token') || null;
+  } catch (error) {
+    // Ignore storage errors on server side
+    sessionToken = null;
+  }
+
+  return {
+    user: null,
+    sessionToken,
+    isLoading: false,
+    isAuthenticated: false,
   
   setUser: (user) => set({ user, isAuthenticated: !!user }),
   
