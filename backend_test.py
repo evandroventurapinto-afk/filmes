@@ -146,25 +146,25 @@ class StreamingAppTester:
         except Exception as e:
             self.log_test("GET /api/movies/1", False, f"Exception: {str(e)}")
         
-        # Test GET /api/movies/search?q=ação (search)
+        # Test GET /api/movies/search?q=explosiva (search)
         try:
-            response = requests.get(f"{self.base_url}/movies/search?q=ação", timeout=10)
+            response = requests.get(f"{self.base_url}/movies/search?q=explosiva", timeout=10)
             if response.status_code == 200:
                 data = response.json()
                 if "results" in data:
                     # Should find "Ação Explosiva"
-                    found_action = any("ação" in movie["title"].lower() for movie in data["results"])
+                    found_action = any("explosiva" in movie["title"].lower() for movie in data["results"])
                     if found_action:
-                        self.log_test("GET /api/movies/search?q=ação", True, f"Found {len(data['results'])} matching movies")
+                        self.log_test("GET /api/movies/search?q=explosiva", True, f"Found {len(data['results'])} matching movies")
                         success_count += 1
                     else:
-                        self.log_test("GET /api/movies/search?q=ação", False, "No matching movies found")
+                        self.log_test("GET /api/movies/search?q=explosiva", False, "No matching movies found")
                 else:
-                    self.log_test("GET /api/movies/search?q=ação", False, "No results field in response")
+                    self.log_test("GET /api/movies/search?q=explosiva", False, "No results field in response")
             else:
-                self.log_test("GET /api/movies/search?q=ação", False, f"Status code: {response.status_code}", response.text)
+                self.log_test("GET /api/movies/search?q=explosiva", False, f"Status code: {response.status_code}", response.text)
         except Exception as e:
-            self.log_test("GET /api/movies/search?q=ação", False, f"Exception: {str(e)}")
+            self.log_test("GET /api/movies/search?q=explosiva", False, f"Exception: {str(e)}")
         
         return success_count == 6
     
