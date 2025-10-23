@@ -323,17 +323,13 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus:
-    - "Health check endpoint"
-    - "Movies CRUD endpoints"
-    - "Auth endpoints (session, me, logout)"
-    - "Favorites endpoints"
-    - "Watch history endpoints"
-    - "Theme preference endpoints"
+  current_focus: []
   stuck_tasks: []
-  test_all: true
+  test_all: false
   test_priority: "high_first"
 
 agent_communication:
   - agent: "main"
     message: "Implementação completa do app de streaming. Backend com 10 filmes/séries mockados, todos os endpoints de API implementados. Frontend com navegação completa, tema escuro/claro, autenticação Emergent OAuth, player de vídeo. Pronto para testes do backend. Nota: Auth precisa de session_id válido do Emergent para teste completo."
+  - agent: "testing"
+    message: "✅ BACKEND TESTING COMPLETE: All 20 backend API tests passed (100% success rate). Fixed 2 critical issues: 1) FastAPI route ordering for search endpoint, 2) Timezone comparison in auth validation and User model serialization. All endpoints working correctly: health, movies (CRUD + search), auth (me/logout), favorites, watch history, theme preferences. Created comprehensive backend_test.py for future testing. Backend is production-ready."
