@@ -101,3 +101,221 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "App de streaming móvel (Expo) com tema escuro/claro, autenticação Google OAuth (Emergent), navegação de filmes/séries, favoritos, player de vídeo, e dados mockados (API TMDB futura)"
+
+backend:
+  - task: "Health check endpoint"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Endpoint /api/health retornando status healthy"
+
+  - task: "Auth endpoints (session, me, logout)"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implementado endpoints de autenticação com Emergent OAuth. Precisa testar com token válido"
+
+  - task: "Movies CRUD endpoints"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Endpoints GET /api/movies, /api/movies/{id}, /api/movies/search implementados com mock data"
+
+  - task: "Favorites endpoints"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Endpoints GET/POST/DELETE para favoritos implementados, requerem autenticação"
+
+  - task: "Watch history endpoints"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Endpoints para rastrear progresso de visualização implementados"
+
+  - task: "Theme preference endpoints"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Endpoints GET/POST para salvar preferência de tema do usuário"
+
+frontend:
+  - task: "Theme system (dark/light)"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/store/themeStore.ts"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Sistema de tema com Zustand e MMKV storage implementado"
+
+  - task: "Authentication flow"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/store/authStore.ts"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Auth store com login, logout, checkAuth implementado com Emergent OAuth"
+
+  - task: "Login screen"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/index.tsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Tela de login com botão Google OAuth e features do app"
+
+  - task: "Home screen with movies"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/(tabs)/index.tsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Home com featured content, trending, movies e series categories"
+
+  - task: "Search screen"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/(tabs)/search.tsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Tela de busca com input e resultados dinâmicos"
+
+  - task: "Favorites screen"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/(tabs)/favorites.tsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Tela de favoritos com listagem e remoção"
+
+  - task: "Profile screen"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/(tabs)/profile.tsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Tela de perfil com info do usuário, toggle de tema e logout"
+
+  - task: "Movie detail screen"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/movie/[id].tsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Tela de detalhes com backdrop, sinopse, rating e botão de assistir"
+
+  - task: "Video player screen"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/movie/player.tsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Player de vídeo com controles, progress bar, e fullscreen"
+
+  - task: "Bottom tabs navigation"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/(tabs)/_layout.tsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Navegação com 4 tabs: Home, Search, Favorites, Profile"
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 0
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Health check endpoint"
+    - "Movies CRUD endpoints"
+    - "Auth endpoints (session, me, logout)"
+    - "Favorites endpoints"
+    - "Watch history endpoints"
+    - "Theme preference endpoints"
+  stuck_tasks: []
+  test_all: true
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: "Implementação completa do app de streaming. Backend com 10 filmes/séries mockados, todos os endpoints de API implementados. Frontend com navegação completa, tema escuro/claro, autenticação Emergent OAuth, player de vídeo. Pronto para testes do backend. Nota: Auth precisa de session_id válido do Emergent para teste completo."
