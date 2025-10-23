@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 import axios from 'axios';
 import Constants from 'expo-constants';
 
