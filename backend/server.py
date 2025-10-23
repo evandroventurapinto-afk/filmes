@@ -326,6 +326,13 @@ async def get_movies(category: Optional[str] = None):
     
     return {"results": movies}
 
+@app.get("/api/movies/search")
+async def search_movies(q: str):
+    """Search movies by title"""
+    query = q.lower()
+    results = [m for m in MOCK_MOVIES if query in m["title"].lower()]
+    return {"results": results}
+
 @app.get("/api/movies/{movie_id}")
 async def get_movie(movie_id: str):
     """Get movie details by ID"""
@@ -333,13 +340,6 @@ async def get_movie(movie_id: str):
     if not movie:
         raise HTTPException(status_code=404, detail="Movie not found")
     return movie
-
-@app.get("/api/movies/search")
-async def search_movies(q: str):
-    """Search movies by title"""
-    query = q.lower()
-    results = [m for m in MOCK_MOVIES if query in m["title"].lower()]
-    return {"results": results}
 
 # Favorites Routes
 @app.get("/api/favorites")
