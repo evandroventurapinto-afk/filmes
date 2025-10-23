@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import * as Linking from 'expo-linking';
-import { useAuthStore } from '../src/store/authStore';
-import { useThemeStore } from '../src/store/themeStore';
-import { Button } from '../src/components/Button';
+import { useAuthStore } from '../../src/store/authStore';
+import { useThemeStore } from '../../src/store/themeStore';
+import { Button } from '../../src/components/Button';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Index() {
