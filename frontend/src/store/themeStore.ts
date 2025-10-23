@@ -14,8 +14,14 @@ interface ThemeState {
 }
 
 export const useThemeStore = create<ThemeState>((set) => {
-  // Load saved theme
-  const savedTheme = storage.getString('theme') as ThemeMode | undefined;
+  // Load saved theme (only on client side)
+  let savedTheme: ThemeMode | undefined;
+  try {
+    savedTheme = storage.getString('theme') as ThemeMode | undefined;
+  } catch (error) {
+    // Ignore storage errors on server side
+    savedTheme = undefined;
+  }
   const initialMode = savedTheme || 'dark';
   
   return {
