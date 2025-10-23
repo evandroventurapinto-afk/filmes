@@ -122,63 +122,78 @@ backend:
 
   - task: "Auth endpoints (session, me, logout)"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implementado endpoints de autenticação com Emergent OAuth. Precisa testar com token válido"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /api/auth/me returns user data correctly, POST /api/auth/logout works. Fixed timezone issue in session validation and User model serialization."
 
   - task: "Movies CRUD endpoints"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Endpoints GET /api/movies, /api/movies/{id}, /api/movies/search implementados com mock data"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: All movie endpoints working - GET /api/movies (10 movies), ?category=trending (top 6), ?category=movies (7 movies), ?category=tv (3 series), /api/movies/1 (specific movie), /api/movies/search?q=explosiva (search). Fixed FastAPI route ordering issue for search endpoint."
 
   - task: "Favorites endpoints"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Endpoints GET/POST/DELETE para favoritos implementados, requerem autenticação"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: All favorites endpoints working - GET /api/favorites (list), POST /api/favorites?movie_id=1 (add), DELETE /api/favorites/1 (remove). Authentication required and working correctly."
 
   - task: "Watch history endpoints"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Endpoints para rastrear progresso de visualização implementados"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Watch history endpoints working - GET /api/watch-history (list), POST /api/watch-history?movie_id=1&progress=45.5 (update progress). Progress tracking and persistence working correctly."
 
   - task: "Theme preference endpoints"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Endpoints GET/POST para salvar preferência de tema do usuário"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Theme endpoints working - GET /api/theme (get current), POST /api/theme?theme=light (update). Theme persistence working correctly."
 
 frontend:
   - task: "Theme system (dark/light)"
