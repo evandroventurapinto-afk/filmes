@@ -2,9 +2,7 @@ import { create } from 'zustand';
 import { MMKV } from 'react-native-mmkv';
 import { lightTheme, darkTheme, Theme } from '../constants/theme';
 
-const storage = new MMKV({
-  id: 'theme-storage',
-});
+const storage = new MMKV();
 
 type ThemeMode = 'light' | 'dark';
 
